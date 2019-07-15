@@ -1,0 +1,2 @@
+# 配置自定义Starter的自动化配置,多个以","分割
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=com.deepexi.eventbus.config.RocketMQAutoConfiguration
