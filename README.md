@@ -1,8 +1,8 @@
-#基于EventBus的spring boot starter<br>
+# 基于EventBus的spring boot starter<br>
 
-##用法<br>
+## 用法<br>
 
-###step1：在项目的pom.xml文件中添加如下依赖
+### step1：在项目的pom.xml文件中添加如下依赖
 ```
     <dependency>
         <groupId>com.deepexi</groupId>
@@ -10,7 +10,7 @@
         <version>1.0.0</version>
     </dependency>
 ```
-###step2：在配置文件application.properties里面添加配置信息(配置会自动提示且有注释说明)
+### step2：在配置文件application.properties里面添加配置信息(配置会自动提示且有注释说明)
 ```
 # 是否开启EventBus
 deepexi.eventbus.enabled=true
@@ -25,8 +25,8 @@ deepexi.eventbus.executor.keep-alive-second=60
 # 线程池等待队列长度
 deepexi.eventbus.executor.queue-size=1024
 ```
-###step3：注册使用EventBus<br>
-####3.1、注册Listener到EvenBus，必须为Spring的Bean
+### step3：注册使用EventBus<br>
+#### 3.1、注册Listener到EvenBus，必须为Spring的Bean
 ```    
     @EventBusListener
     @Service
@@ -38,7 +38,7 @@ deepexi.eventbus.executor.queue-size=1024
         }
     }
 ```        
-####3.2、发送EventBus事件
+#### 3.2、发送EventBus事件
 ```
     @Service
     public class DingMessageServiceImpl implement DingMessageService {
