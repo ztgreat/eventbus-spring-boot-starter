@@ -15,7 +15,7 @@ public class EventBusProperties {
     /**
      * 异步任务的线程配置
      */
-    private AsyncExecutorProperties Executor = new AsyncExecutorProperties();
+    private AsyncExecutorProperties executor = new AsyncExecutorProperties();
 
     public Boolean getEnabled() {
         return enabled;
@@ -26,10 +26,10 @@ public class EventBusProperties {
     }
 
     public AsyncExecutorProperties getExecutor() {
-        return Executor;
+        return executor;
     }
 
     public void setExecutor(AsyncExecutorProperties executor) {
-        Executor = executor;
+        this.executor = executor;
     }
 }
