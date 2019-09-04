@@ -42,7 +42,7 @@ public class EventBusAutoConfiguration implements ApplicationListener<Applicatio
         Set<Map.Entry<String, Object>> entryList = beanMap.entrySet();
         entryList.forEach(entry -> {
             try{
-                this.eventBus.register(entry.getValue());
+                eventBus.register(entry.getValue());
                 LOGGER.info("load Spring bean [" + entry.getKey() + "] to EventBus successfully");
             } catch (Exception e) {
                 LOGGER.warn("load Spring bean [" + entry.getKey() + "] to EventBus failed, will ignore this bean");
@@ -53,7 +53,8 @@ public class EventBusAutoConfiguration implements ApplicationListener<Applicatio
     @Bean
     public EventBus initEventBus() {
         LOGGER.info("Init EventBus bean [eventBus]");
-        return new EventBus(eventBusProperties.getName());
+        eventBus =  new EventBus(eventBusProperties.getName());
+        return eventBus;
     }
 
 }
