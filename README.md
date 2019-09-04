@@ -14,16 +14,8 @@
 ```
 # 是否开启EventBus
 deepexi.eventbus.enabled=true
-# 线程池名称
-deepexi.eventbus.executor.pool-name=deepexi-EventBus
-# 线程池核心线程池大小
-deepexi.eventbus.executor.core-pool-size=18
-# 最大线程池大小
-deepexi.eventbus.executor.maximum-pool-size=50
-# 线程池的时长
-deepexi.eventbus.executor.keep-alive-second=60
-# 线程池等待队列长度
-deepexi.eventbus.executor.queue-size=1024
+# EventBus名字
+deepexi.eventbus.name="com.deepexi"
 ```
 ### step3：注册使用EventBus<br>
 #### 3.1、注册Listener到EvenBus，必须为Spring的Bean
