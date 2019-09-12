@@ -59,22 +59,7 @@
 
     </dependencies>
 
-    <!-- 打包到私服的地址（必配！）,打包时不要设置版本号,版本号在此pom中写死 -->
-    <!-- 打包步骤: -->
-        <!-- 1: mvn clean install -U -->
-        <!-- 2: mvn deploy -U -->
-    <distributionManagement>
-        <repository>
-            <id>depick</id>
-            <name>User Project Release</name>
-            <url>http://nexus.deepexi.top/repository/maven-releases/</url>
-        </repository>
-        <snapshotRepository>
-            <id>depick</id>
-            <name>User Project SNAPSHOTS</name>
-            <url>http://nexus.deepexi.top/repository/maven-snapshots/</url>
-        </snapshotRepository>
-    </distributionManagement>
+
 
 
     <build>
