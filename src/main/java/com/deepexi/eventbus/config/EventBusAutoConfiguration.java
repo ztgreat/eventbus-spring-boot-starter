@@ -1,7 +1,10 @@
 package com.deepexi.eventbus.config;
 
+import cn.hutool.core.thread.ThreadFactoryBuilder;
+import com.deepexi.eventbus.AsyncEventBus;
 import com.deepexi.eventbus.EventBus;
 import com.deepexi.eventbus.annotation.EventBusListener;
+import com.deepexi.eventbus.properties.AsyncExecutorProperties;
 import com.deepexi.eventbus.properties.EventBusProperties;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -16,6 +19,10 @@ import org.springframework.context.annotation.Configuration;
 import javax.annotation.Resource;
 import java.util.Map;
 import java.util.Set;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.LinkedBlockingQueue;
+import java.util.concurrent.ThreadPoolExecutor;
+import java.util.concurrent.TimeUnit;
 
 /**
  * @author chenglu
@@ -30,6 +37,7 @@ public class EventBusAutoConfiguration implements ApplicationListener<Applicatio
     private static final Logger LOGGER = LoggerFactory.getLogger(EventBusAutoConfiguration.class);
     @Resource
     private EventBusProperties eventBusProperties;
+
     private EventBus eventBus;
 
     @Override
@@ -52,8 +60,13 @@ public class EventBusAutoConfiguration implements ApplicationListener<Applicatio
 
     @Bean
     public EventBus initEventBus() {
-        LOGGER.info("Init EventBus bean [eventBus]");
-        eventBus =  new EventBus(eventBusProperties.getName());
+        AsyncExecutorProperties asyncExecutor = eventBusProperties.getExecutor();
+        LOGGER.info("init  EventBus bean [eventBus], async threadPool info [{}]", asyncExecutor);
+        ExecutorService executorService = new ThreadPoolExecutor(asyncExecutor.getCorePoolSize(),
+                asyncExecutor.getMaximumPoolSize(), asyncExecutor.getKeepAliveSecond(), TimeUnit.SECONDS,
+                new LinkedBlockingQueue<>(asyncExecutor.getQueueSize()),
+                new ThreadFactoryBuilder().setNamePrefix(asyncExecutor.getPoolName()).build());
+        this.eventBus = new AsyncEventBus(eventBusProperties.getName(), executorService);
         return eventBus;
     }
 

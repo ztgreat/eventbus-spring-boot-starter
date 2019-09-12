@@ -5,10 +5,10 @@ package com.deepexi.eventbus.properties;
  * @Date 2019/7/15
  */
 public class AsyncExecutorProperties {
-    private int corePoolSize = 18;
+    private int corePoolSize = 10;
     private int maximumPoolSize = 50;
     private long keepAliveSecond = 60;
-    private int queueSize = 1024;
+    private int queueSize = 10240;
     private String poolName = "deepexi-EventBus";
 
     public int getCorePoolSize() {

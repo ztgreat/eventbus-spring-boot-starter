@@ -12,7 +12,14 @@ public class EventBusProperties {
      * 是否开启EvenBus
      */
     private Boolean enabled = false;
+
+
     private String name = "deepexi-eventbus";
+
+    /**
+     * 异步任务的线程配置
+     */
+    private AsyncExecutorProperties executor = new AsyncExecutorProperties();
 
     public Boolean getEnabled() {
         return enabled;
@@ -28,5 +35,13 @@ public class EventBusProperties {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public AsyncExecutorProperties getExecutor() {
+        return executor;
+    }
+
+    public void setExecutor(AsyncExecutorProperties executor) {
+        this.executor = executor;
     }
 }

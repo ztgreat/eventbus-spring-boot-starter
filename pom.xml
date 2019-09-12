@@ -7,7 +7,7 @@
     <groupId>com.deepexi</groupId>
     <artifactId>deepexi-eventbus-spring-boot-starter</artifactId>
     <!-- 若更新较大,注意变更版本号! -->
-    <version>1.1.0</version>
+    <version>1.1.1</version>
     <packaging>jar</packaging>
 
     <!-- 不要依赖父POM! 避免引入的包过于累赘! -->
