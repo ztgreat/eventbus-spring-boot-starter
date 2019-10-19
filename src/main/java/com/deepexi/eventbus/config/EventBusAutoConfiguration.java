@@ -66,7 +66,7 @@ public class EventBusAutoConfiguration implements ApplicationListener<Applicatio
                 asyncExecutor.getMaximumPoolSize(), asyncExecutor.getKeepAliveSecond(), TimeUnit.SECONDS,
                 new LinkedBlockingQueue<>(asyncExecutor.getQueueSize()),
                 new ThreadFactoryBuilder().setNamePrefix(asyncExecutor.getPoolName()).build());
-        this.eventBus = new AsyncEventBus(eventBusProperties.getName(), executorService, (e, context) -> LOGGER.error("[event-bus] 事件执行异常,异常模块[{}],异常模块[{}],异常信息:[{}]", context.getSubscribeMethod().getName(), context.getSubscribeMethod().getMethod(), e));
+        this.eventBus = new AsyncEventBus(eventBusProperties.getName(), executorService, (e, context) -> LOGGER.error("[event-bus] 事件执行异常,异常模块[{}],异常方法[{}],异常信息:[{}]", context.getSubscribeMethod().getName(), context.getSubscribeMethod().getMethod(), e));
         return eventBus;
     }
 
